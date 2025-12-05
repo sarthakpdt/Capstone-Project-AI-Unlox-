@@ -156,11 +156,11 @@ http://localhost:5000
 
 ```
 ai-gym-assistant/
-├── app.py                    # Main Flask application
-├── static/
-│   ├── styles.css            # Stylesheet
-│   └── script.js             # Frontend logic
-└── README.md                 # This file
+├── app.py                    
+├── index.html
+├── styles.css           
+└── script.js            
+
 ```
 
 ---
