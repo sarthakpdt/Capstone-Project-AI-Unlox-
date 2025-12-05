@@ -1,0 +1,1127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Gym Assistant - Complete Fitness Platform</title>
+    <!-- Changed from /static/styles.css to styles.css -->
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <!-- Background Animation -->
+    <div class="bg-animation">
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <div class="logo-icon">🏋️‍♂️</div>
+            <div>
+                <h1>AI Gym Assistant</h1>
+                <span>Complete AI-Powered Fitness Platform</span>
+            </div>
+        </div>
+        <div class="status">
+            <div class="status-dot" id="statusDot"></div>
+            <span id="statusText">System Ready</span>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="main-nav">
+        <a href="#dashboard" class="nav-link active" data-tab="dashboard">
+            <i class="fas fa-home"></i> Dashboard
+        </a>
+        <a href="#squat-counter" class="nav-link" data-tab="squat-counter">
+            <i class="fas fa-dumbbell"></i> Squat Counter
+        </a>
+        <a href="#diet-coach" class="nav-link" data-tab="diet-coach">
+            <i class="fas fa-apple-alt"></i> Diet Coach
+        </a>
+        <a href="#habit-tracker" class="nav-link" data-tab="habit-tracker">
+            <i class="fas fa-chart-line"></i> Habit Tracker
+        </a>
+        <a href="#gym-buddy" class="nav-link" data-tab="gym-buddy">
+            <i class="fas fa-robot"></i> Gym Buddy
+        </a>
+        <a href="#performance" class="nav-link" data-tab="performance">
+            <i class="fas fa-tachometer-alt"></i> Performance
+        </a>
+        <a href="#gym-planner" class="nav-link" data-tab="gym-planner">
+            <i class="fas fa-map-marker-alt"></i> Gym Planner
+        </a>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Dashboard -->
+        <section id="dashboard" class="tab-content active">
+            <div class="dashboard-header">
+                <h1><i class="fas fa-dashboard"></i> AI Fitness Dashboard</h1>
+                <p>Your complete fitness intelligence platform</p>
+            </div>
+            
+            <div class="dashboard-grid">
+                <!-- Quick Stats -->
+                <div class="dashboard-card large">
+                    <h3><i class="fas fa-chart-bar"></i> Weekly Overview</h3>
+                    <div class="stats-grid">
+                        <div class="stat-box">
+                            <div class="stat-value" id="weeklyWorkouts">0</div>
+                            <div class="stat-label">Workouts</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-value" id="weeklyCalories">0</div>
+                            <div class="stat-label">Calories</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-value" id="consistencyScore">0%</div>
+                            <div class="stat-label">Consistency</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-value" id="performanceTrend">-</div>
+                            <div class="stat-label">Trend</div>
+                        </div>
+                    </div>
+                    <canvas id="weeklyChart" width="400" height="200"></canvas>
+                </div>
+                
+                <!-- AI Recommendations -->
+                <div class="dashboard-card">
+                    <h3><i class="fas fa-lightbulb"></i> AI Recommendations</h3>
+                    <div class="recommendations-list" id="aiRecommendations">
+                        <div class="recommendation">
+                            <i class="fas fa-dumbbell"></i>
+                            <span>Start with 3 squat sessions this week</span>
+                        </div>
+                        <div class="recommendation">
+                            <i class="fas fa-apple-alt"></i>
+                            <span>Increase protein intake by 20g daily</span>
+                        </div>
+                        <div class="recommendation">
+                            <i class="fas fa-bed"></i>
+                            <span>Aim for 7-8 hours of sleep nightly</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Quick Access -->
+                <div class="dashboard-card">
+                    <h3><i class="fas fa-bolt"></i> Quick Actions</h3>
+                    <div class="quick-actions">
+                        <button class="quick-btn" data-tab="squat-counter">
+                            <i class="fas fa-video"></i> Start Workout
+                        </button>
+                        <button class="quick-btn" data-tab="diet-coach">
+                            <i class="fas fa-utensils"></i> Diet Plan
+                        </button>
+                        <button class="quick-btn" data-tab="gym-buddy">
+                            <i class="fas fa-comment"></i> Chat Buddy
+                        </button>
+                        <button class="quick-btn" data-tab="gym-planner">
+                            <i class="fas fa-map"></i> Find Gyms
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Today's Focus -->
+                <div class="dashboard-card">
+                    <h3><i class="fas fa-bullseye"></i> Today's Focus</h3>
+                    <div class="focus-area">
+                        <div class="focus-icon">🏋️</div>
+                        <div class="focus-content">
+                            <h4>Lower Body Strength</h4>
+                            <p>Focus on squats and lunges with proper form</p>
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 65%"></div>
+                            </div>
+                            <span>65% complete</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Squat Counter -->
+        <section id="squat-counter" class="tab-content">
+            <div class="section-header">
+                <h2><i class="fas fa-dumbbell"></i> AI Squat Counter with Performance Analysis</h2>
+                <p>Real-time pose detection with advanced form feedback and rep counting</p>
+            </div>
+            
+            <div class="squat-container">
+                <div class="video-panel">
+                    <div class="glass-card">
+                        <div class="video-wrapper">
+                            <video id="video" autoplay playsinline class="offline"></video>
+                            <canvas id="c" width="640" height="480"></canvas>
+                            <div class="pose-overlay">
+                                <div class="pose-metric">
+                                    <span>Knee Angle:</span>
+                                    <strong id="liveKneeAngle">-</strong>
+                                </div>
+                                <div class="pose-metric">
+                                    <span>Symmetry:</span>
+                                    <strong id="liveSymmetry">-</strong>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="loading" id="loading">
+                            <div class="spinner"></div>
+                            <p>Initializing AI Pose Detection...</p>
+                        </div>
+                        
+                        <div class="controls">
+                            <button id="startCamera" class="btn btn-primary">
+                                <i class="fas fa-video"></i> Start Camera
+                            </button>
+                            <button id="toggleCounting" class="btn btn-secondary" disabled>
+                                <i class="fas fa-play"></i> Start Counting
+                            </button>
+                            <button id="saveSession" class="btn btn-success" disabled>
+                                <i class="fas fa-save"></i> Save Session
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="analysis-panel">
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <h3><i class="fas fa-redo-alt"></i> Total Reps</h3>
+                            <div class="stat-value" id="reps">0</div>
+                            <div class="stat-subtext" id="repGoal">Goal: 20 reps</div>
+                        </div>
+                        
+                        <div class="stat-card">
+                            <h3><i class="fas fa-chart-line"></i> Performance Score</h3>
+                            <div class="stat-value" id="performanceScore">-</div>
+                            <div class="stat-subtext" id="performanceTrend">Trend: -</div>
+                        </div>
+                        
+                        <div class="stat-card">
+                            <h3><i class="fas fa-balance-scale"></i> Symmetry</h3>
+                            <div class="stat-value" id="symmetryScore">-</div>
+                            <div class="stat-subtext" id="symmetryStatus">Balanced</div>
+                        </div>
+                        
+                        <div class="stat-card">
+                            <h3><i class="fas fa-ruler"></i> Range of Motion</h3>
+                            <div class="stat-value" id="romScore">-</div>
+                            <div class="stat-subtext" id="romStatus">Optimal</div>
+                        </div>
+                    </div>
+                    
+                    <div class="feedback-panel">
+                        <h3><i class="fas fa-comment-medical"></i> AI Form Feedback</h3>
+                        <div class="feedback-content" id="feedback">
+                            <p>Stand in frame to begin analysis...</p>
+                        </div>
+                        <div class="form-details">
+                            <div class="form-metric">
+                                <span>Knee Angle:</span>
+                                <strong id="kneeAngle">-</strong>
+                            </div>
+                            <div class="form-metric">
+                                <span>Back Angle:</span>
+                                <strong id="backAngle">-</strong>
+                            </div>
+                            <div class="form-metric">
+                                <span>Stage:</span>
+                                <strong id="stage">Standing</strong>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="history-panel">
+                        <h3><i class="fas fa-history"></i> Session History</h3>
+                        <div class="session-list" id="sessionHistory">
+                            <p>No sessions recorded yet</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Diet Coach -->
+        <section id="diet-coach" class="tab-content">
+            <div class="section-header">
+                <h2><i class="fas fa-apple-alt"></i> AI Dietician & Calorie Coach</h2>
+                <p>Personalized diet plans based on your goals and preferences</p>
+            </div>
+            
+            <div class="diet-container">
+                <div class="diet-input">
+                    <div class="glass-card">
+                        <h3><i class="fas fa-user-cog"></i> Personal Details</h3>
+                        <div class="input-grid">
+                            <div class="input-group">
+                                <label for="weight">Weight (kg)</label>
+                                <input type="number" id="weight" value="70" min="30" max="200">
+                            </div>
+                            <div class="input-group">
+                                <label for="height">Height (cm)</label>
+                                <input type="number" id="height" value="175" min="100" max="250">
+                            </div>
+                            <div class="input-group">
+                                <label for="age">Age</label>
+                                <input type="number" id="age" value="30" min="15" max="100">
+                            </div>
+                            <div class="input-group">
+                                <label for="gender">Gender</label>
+                                <select id="gender">
+                                    <option value="male">Male</option>
+                                    <option value="female">Female</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <h3><i class="fas fa-bullseye"></i> Fitness Goals</h3>
+                        <div class="goal-selector">
+                            <button class="goal-btn active" data-goal="loss" type="button">Weight Loss</button>
+                            <button class="goal-btn" data-goal="maintain" type="button">Maintain</button>
+                            <button class="goal-btn" data-goal="gain" type="button">Muscle Gain</button>
+                        </div>
+                        
+                        <h3><i class="fas fa-utensils"></i> Dietary Preference</h3>
+                        <div class="diet-selector">
+                            <button class="diet-btn active" data-diet="balanced" type="button">Balanced</button>
+                            <button class="diet-btn" data-diet="vegetarian" type="button">Vegetarian</button>
+                            <button class="diet-btn" data-diet="vegan" type="button">Vegan</button>
+                            <button class="diet-btn" data-diet="keto" type="button">Keto</button>
+                        </div>
+                                                    
+                        <h3><i class="fas fa-running"></i> Activity Level</h3>
+                        <div class="activity-slider">
+                            <input type="range" id="activityLevel" min="1" max="5" value="3">
+                            <div class="slider-labels">
+                                <span>Sedentary</span>
+                                <span>Light</span>
+                                <span>Moderate</span>
+                                <span>Active</span>
+                                <span>Very Active</span>
+                            </div>
+                        </div>
+                        
+                        <button id="generateDietPlan" class="btn btn-primary">
+                            <i class="fas fa-calculator"></i> Generate Diet Plan
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="diet-results">
+                    <div class="glass-card">
+                        <h3><i class="fas fa-chart-pie"></i> Nutrition Overview</h3>
+                        <div class="nutrition-stats">
+                            <div class="nutrition-card">
+                                <h4>Daily Calories</h4>
+                                <div class="nutrition-value" id="dailyCalories">-</div>
+                                <canvas id="calorieChart" width="150" height="150"></canvas>
+                            </div>
+                            <div class="macronutrients">
+                                <div class="macro-item">
+                                    <div class="macro-label">Protein</div>
+                                    <div class="macro-value" id="proteinAmount">- g</div>
+                                    <div class="macro-bar">
+                                        <div class="macro-fill" style="width: 30%"></div>
+                                    </div>
+                                </div>
+                                <div class="macro-item">
+                                    <div class="macro-label">Carbs</div>
+                                    <div class="macro-value" id="carbsAmount">- g</div>
+                                    <div class="macro-bar">
+                                        <div class="macro-fill" style="width: 40%"></div>
+                                    </div>
+                                </div>
+                                <div class="macro-item">
+                                    <div class="macro-label">Fats</div>
+                                    <div class="macro-value" id="fatsAmount">- g</div>
+                                    <div class="macro-bar">
+                                        <div class="macro-fill" style="width: 30%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <h3><i class="fas fa-clock"></i> Meal Plan</h3>
+                        <div class="meal-plan" id="mealPlan">
+                            <div class="meal-card">
+                                <div class="meal-time">Breakfast</div>
+                                <div class="meal-content">Oatmeal with berries & almonds</div>
+                                <div class="meal-calories">350 kcal</div>
+                            </div>
+                            <div class="meal-card">
+                                <div class="meal-time">Lunch</div>
+                                <div class="meal-content">Grilled chicken with quinoa</div>
+                                <div class="meal-calories">550 kcal</div>
+                            </div>
+                            <div class="meal-card">
+                                <div class="meal-time">Dinner</div>
+                                <div class="meal-content">Salmon with sweet potato</div>
+                                <div class="meal-calories">600 kcal</div>
+                            </div>
+                            <div class="meal-card">
+                                <div class="meal-time">Snacks</div>
+                                <div class="meal-content">Greek yogurt, fruits</div>
+                                <div class="meal-calories">250 kcal</div>
+                            </div>
+                        </div>
+                        
+                        <h3><i class="fas fa-shopping-cart"></i> Grocery List</h3>
+                        <div class="grocery-list" id="groceryList">
+                            <ul>
+                                <li><input type="checkbox"> Fresh vegetables</li>
+                                <li><input type="checkbox"> Lean protein sources</li>
+                                <li><input type="checkbox"> Whole grains</li>
+                                <li><input type="checkbox"> Healthy fats</li>
+                                <li><input type="checkbox"> Fruits</li>
+                            </ul>
+                            <button class="btn btn-sm btn-secondary">
+                                <i class="fas fa-print"></i> Print List
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Habit Tracker -->
+        <section id="habit-tracker" class="tab-content">
+            <div class="section-header">
+                <h2><i class="fas fa-chart-line"></i> AI Fitness Habit Tracker</h2>
+                <p>Predicts workout patterns and provides motivational nudges</p>
+            </div>
+            
+            <div class="habit-container">
+                <div class="habit-analysis">
+                    <div class="glass-card">
+                        <h3><i class="fas fa-brain"></i> AI Analysis</h3>
+                        <div class="analysis-grid">
+                            <div class="analysis-card">
+                                <h4>Skip Probability</h4>
+                                <div class="analysis-value" id="skipProbability">-</div>
+                                <div class="progress-bar large">
+                                    <div class="progress" id="skipBar"></div>
+                                </div>
+                                <div class="analysis-tip" id="skipTip">Based on your patterns</div>
+                            </div>
+                            
+                            <div class="analysis-card">
+                                <h4>Consistency Score</h4>
+                                <div class="analysis-value" id="consistencyScore">-</div>
+                                <div class="progress-bar large">
+                                    <div class="progress" id="consistencyBar"></div>
+                                </div>
+                                <div class="analysis-tip">Higher is better</div>
+                            </div>
+                            
+                            <div class="analysis-card">
+                                <h4>Optimal Workout Time</h4>
+                                <div class="analysis-value" id="optimalTime">-</div>
+                                <div class="analysis-tip">Based on your history</div>
+                            </div>
+                            
+                            <div class="analysis-card">
+                                <h4>Weekly Trend</h4>
+                                <div class="analysis-value" id="weeklyTrend">-</div>
+                                <div class="analysis-tip" id="trendTip">Compared to last week</div>
+                            </div>
+                        </div>
+                        
+                        <h3><i class="fas fa-bell"></i> Motivational Nudge</h3>
+                        <div class="motivation-card" id="motivationNudge">
+                            <div class="motivation-icon">💪</div>
+                            <div class="motivation-text">
+                                <p>Remember why you started! Every workout brings you closer to your goals.</p>
+                            </div>
+                        </div>
+                        
+                        <h3><i class="fas fa-calendar-alt"></i> Weekly Schedule</h3>
+                        <div class="calendar">
+                            <div class="calendar-header">
+                                <button class="calendar-nav"><i class="fas fa-chevron-left"></i></button>
+                                <div class="calendar-month">November 2024</div>
+                                <button class="calendar-nav"><i class="fas fa-chevron-right"></i></button>
+                            </div>
+                            <div class="calendar-grid" id="workoutCalendar">
+                                <!-- Calendar will be populated by JS -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="habit-log">
+                    <div class="glass-card">
+                        <h3><i class="fas fa-plus-circle"></i> Log Workout</h3>
+                        <div class="log-form">
+                            <div class="input-group">
+                                <label for="workoutType">Workout Type</label>
+                                <select id="workoutType">
+                                    <option value="squat">Squat Session</option>
+                                    <option value="cardio">Cardio</option>
+                                    <option value="strength">Strength Training</option>
+                                    <option value="flexibility">Flexibility</option>
+                                    <option value="hiit">HIIT</option>
+                                </select>
+                            </div>
+                            
+                            <div class="input-group">
+                                <label for="workoutDuration">Duration (minutes)</label>
+                                <input type="number" id="workoutDuration" value="45" min="5" max="180">
+                            </div>
+                            
+                            <div class="input-group">
+                                <label for="workoutIntensity">Intensity Level</label>
+                                <div class="intensity-selector">
+                                    <button class="intensity-btn" data-intensity="1" type="button">Low</button>
+                                    <button class="intensity-btn active" data-intensity="3" type="button">Medium</button>
+                                    <button class="intensity-btn" data-intensity="5" type="button">High</button>
+                                </div>
+                            </div>
+                            
+                            <div class="input-group">
+                                <label for="workoutNotes">Notes</label>
+                                <textarea id="workoutNotes" placeholder="How did you feel? Any challenges?"></textarea>
+                            </div>
+                            
+                            <button id="logWorkoutBtn" class="btn btn-primary">
+                                <i class="fas fa-save"></i> Save Workout
+                            </button>
+                        </div>
+                        
+                        <h3><i class="fas fa-history"></i> Recent Workouts</h3>
+                        <div class="workout-history" id="workoutHistory">
+                            <div class="workout-item">
+                                <div class="workout-type">Squat Session</div>
+                                <div class="workout-details">
+                                    <span>45 min</span>
+                                    <span>20 reps</span>
+                                    <span>85% score</span>
+                                </div>
+                                <div class="workout-date">Today</div>
+                            </div>
+                        </div>
+                        
+                        <h3><i class="fas fa-chart-bar"></i> Habit Insights</h3>
+                        <div class="insights">
+                            <div class="insight">
+                                <i class="fas fa-fire"></i>
+                                <div>
+                                    <strong>Streak:</strong>
+                                    <span id="workoutStreak">3 days</span>
+                                </div>
+                            </div>
+                            <div class="insight">
+                                <i class="fas fa-trophy"></i>
+                                <div>
+                                    <strong>Best Week:</strong>
+                                    <span id="bestWeek">5 workouts</span>
+                                </div>
+                            </div>
+                            <div class="insight">
+                                <i class="fas fa-clock"></i>
+                                <div>
+                                    <strong>Avg Duration:</strong>
+                                    <span id="avgDuration">45 min</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gym Buddy -->
+        <section id="gym-buddy" class="tab-content">
+            <div class="section-header">
+                <h2><i class="fas fa-robot"></i> Virtual Gym Buddy</h2>
+                <p>Your AI companion for motivation, advice, and emotional support</p>
+            </div>
+            
+            <div class="buddy-container">
+                <div class="chat-interface">
+                    <div class="glass-card">
+                        <div class="chat-header">
+                            <div class="buddy-avatar">
+                                <div class="avatar-icon">🤖</div>
+                                <div class="avatar-info">
+                                    <h4>AI Gym Buddy</h4>
+                                    <span class="status online">Online</span>
+                                </div>
+                            </div>
+                            <div class="buddy-mood">
+                                <span>Mood: </span>
+                                <strong id="buddyMood">Motivated</strong>
+                            </div>
+                        </div>
+                        
+                        <div class="chat-messages" id="chatMessages">
+                            <div class="message bot">
+                                <div class="message-avatar">🤖</div>
+                                <div class="message-content">
+                                    <p>Hi there! I'm your AI Gym Buddy. I'm here to motivate you, answer your fitness questions, and help you stay on track with your goals. How can I help you today?</p>
+                                    <div class="message-time">Just now</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="chat-input-container">
+                            <div class="quick-questions">
+                                <button class="quick-question" data-question="How do I improve my squat form?">
+                                    <i class="fas fa-dumbbell"></i> Form Tips
+                                </button>
+                                <button class="quick-question" data-question="I need motivation to workout today">
+                                    <i class="fas fa-fire"></i> Motivation
+                                </button>
+                                <button class="quick-question" data-question="What should I eat after workout?">
+                                    <i class="fas fa-apple-alt"></i> Nutrition
+                                </button>
+                            </div>
+                            
+                            <div class="input-group">
+                                <input type="text" id="chatInput" placeholder="Ask me anything about fitness...">
+                                <button id="sendMessage" class="btn btn-primary">
+                                    <i class="fas fa-paper-plane"></i> Send
+                                </button>
+                            </div>
+                            
+                            <div class="chat-suggestions">
+                                <span>Try asking:</span>
+                                <button class="suggestion">"How many squats should I do?"</button>
+                                <button class="suggestion">"I'm feeling tired, what should I do?"</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="buddy-features">
+                    <div class="glass-card">
+                        <h3><i class="fas fa-heartbeat"></i> Emotional Analysis</h3>
+                        <div class="sentiment-analysis">
+                            <div class="sentiment-meter">
+                                <div class="meter-labels">
+                                    <span>Stressed</span>
+                                    <span>Neutral</span>
+                                    <span>Motivated</span>
+                                </div>
+                                <div class="meter-bar">
+                                    <div class="meter-fill" id="sentimentFill"></div>
+                                </div>
+                            </div>
+                            <div class="sentiment-details">
+                                <div class="detail-item">
+                                    <span>Current State:</span>
+                                    <strong id="currentState">Motivated</strong>
+                                </div>
+                                <div class="detail-item">
+                                    <span>Energy Level:</span>
+                                    <strong id="energyLevel">High</strong>
+                                </div>
+                                <div class="detail-item">
+                                    <span>Motivation:</span>
+                                    <strong id="motivationLevel">85%</strong>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <h3><i class="fas fa-lightbulb"></i> Suggested Topics</h3>
+                        <div class="topic-suggestions" id="topicSuggestions">
+                            <button class="topic-btn">Workout Form Tips</button>
+                            <button class="topic-btn">Nutrition Guidance</button>
+                            <button class="topic-btn">Motivation Boost</button>
+                            <button class="topic-btn">Progress Tracking</button>
+                        </div>
+                        
+                        <h3><i class="fas fa-trophy"></i> Achievement Badges</h3>
+                        <div class="badges-grid">
+                            <div class="badge">
+                                <div class="badge-icon">🔥</div>
+                                <div class="badge-info">
+                                    <strong>3-Day Streak</strong>
+                                    <span>Keep going!</span>
+                                </div>
+                            </div>
+                            <div class="badge">
+                                <div class="badge-icon">💪</div>
+                                <div class="badge-info">
+                                    <strong>Form Master</strong>
+                                    <span>Great technique!</span>
+                                </div>
+                            </div>
+                            <div class="badge locked">
+                                <div class="badge-icon">🏆</div>
+                                <div class="badge-info">
+                                    <strong>Week Warrior</strong>
+                                    <span>5 workouts/week</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <h3><i class="fas fa-cog"></i> Buddy Settings</h3>
+                        <div class="settings">
+                            <div class="setting-item">
+                                <span>Personality Type</span>
+                                <select id="personalityType">
+                                    <option value="motivational">Motivational</option>
+                                    <option value="technical">Technical</option>
+                                    <option value="friendly">Friendly</option>
+                                    <option value="strict">Strict</option>
+                                </select>
+                            </div>
+                            <div class="setting-item">
+                                <span>Check-in Frequency</span>
+                                <select id="checkinFrequency">
+                                    <option value="daily">Daily</option>
+                                    <option value="weekly">Weekly</option>
+                                    <option value="custom">Custom</option>
+                                </select>
+                            </div>
+                            <button class="btn btn-sm btn-secondary">
+                                <i class="fas fa-save"></i> Save Settings
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Performance Analyzer -->
+        <section id="performance" class="tab-content">
+            <div class="section-header">
+                <h2><i class="fas fa-tachometer-alt"></i> Pose-to-Performance Analyzer</h2>
+                <p>Advanced motion analysis with detailed performance scoring</p>
+            </div>
+            
+            <div class="performance-container">
+                <div class="performance-score">
+                    <div class="glass-card">
+                        <h3><i class="fas fa-chart-line"></i> Performance Dashboard</h3>
+                        <div class="score-overview">
+                            <div class="main-score">
+                                <div class="score-circle">
+                                    <svg width="180" height="180">
+                                        <circle cx="90" cy="90" r="80" stroke="#2a2f46" stroke-width="10" fill="none"></circle>
+                                        <circle cx="90" cy="90" r="80" stroke="#00d4ff" stroke-width="10" fill="none" 
+                                                stroke-dasharray="502" stroke-dashoffset="502" id="performanceCircle"></circle>
+                                    </svg>
+                                    <div class="score-value" id="overallScore">85</div>
+                                    <div class="score-label">Overall Score</div>
+                                </div>
+                                <div class="score-breakdown">
+                                    <div class="breakdown-item">
+                                        <span>Form:</span>
+                                        <strong id="formScore">88</strong>
+                                        <div class="breakdown-bar">
+                                            <div class="breakdown-fill" style="width: 88%"></div>
+                                        </div>
+                                    </div>
+                                    <div class="breakdown-item">
+                                        <span>Consistency:</span>
+                                        <strong id="consistencyMetric">82</strong>
+                                        <div class="breakdown-bar">
+                                            <div class="breakdown-fill" style="width: 82%"></div>
+                                        </div>
+                                    </div>
+                                    <div class="breakdown-item">
+                                        <span>Progress:</span>
+                                        <strong id="progressMetric">+12%</strong>
+                                        <div class="breakdown-bar">
+                                            <div class="breakdown-fill" style="width: 75%"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="metrics-grid">
+                            <div class="metric-card">
+                                <h4>Symmetry Score</h4>
+                                <div class="metric-value" id="symmetryMetric">92%</div>
+                                <div class="metric-trend up">+5%</div>
+                            </div>
+                            <div class="metric-card">
+                                <h4>Range of Motion</h4>
+                                <div class="metric-value" id="romMetric">88%</div>
+                                <div class="metric-trend up">+3%</div>
+                            </div>
+                            <div class="metric-card">
+                                <h4>Form Stability</h4>
+                                <div class="metric-value" id="stabilityMetric">85%</div>
+                                <div class="metric-trend neutral">±0%</div>
+                            </div>
+                            <div class="metric-card">
+                                <h4>Rep Consistency</h4>
+                                <div class="metric-value" id="repConsistency">90%</div>
+                                <div class="metric-trend up">+2%</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="performance-details">
+                    <div class="glass-card">
+                        <h3><i class="fas fa-calendar-week"></i> Weekly Progress Report</h3>
+                        <div class="weekly-report">
+                            <canvas id="weeklyProgressChart" width="400" height="200"></canvas>
+                            <div class="report-summary">
+                                <div class="summary-item">
+                                    <span>Best Day:</span>
+                                    <strong id="bestDay">Monday (92%)</strong>
+                                </div>
+                                <div class="summary-item">
+                                    <span>Total Workouts:</span>
+                                    <strong id="totalWorkouts">12</strong>
+                                </div>
+                                <div class="summary-item">
+                                    <span>Avg. Score:</span>
+                                    <strong id="avgScore">85%</strong>
+                                </div>
+                                <div class="summary-item">
+                                    <span>Improvement:</span>
+                                    <strong class="positive">+8%</strong>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <h3><i class="fas fa-clipboard-list"></i> Detailed Analysis</h3>
+                        <div class="analysis-details">
+                            <div class="detail-card">
+                                <h4>Form Breakdown</h4>
+                                <ul class="form-list">
+                                    <li>
+                                        <span>Knee Tracking</span>
+                                        <div class="form-rating excellent">Excellent</div>
+                                    </li>
+                                    <li>
+                                        <span>Back Alignment</span>
+                                        <div class="form-rating good">Good</div>
+                                    </li>
+                                    <li>
+                                        <span>Depth Consistency</span>
+                                        <div class="form-rating good">Good</div>
+                                    </li>
+                                    <li>
+                                        <span>Balance</span>
+                                        <div class="form-rating excellent">Excellent</div>
+                                    </li>
+                                </ul>
+                            </div>
+                            
+                            <div class="detail-card">
+                                <h4>Areas for Improvement</h4>
+                                <div class="improvement-list">
+                                    <div class="improvement-item">
+                                        <i class="fas fa-exclamation-circle"></i>
+                                        <div>
+                                            <strong>Increase ROM</strong>
+                                            <p>Try going 2 inches deeper on each squat</p>
+                                        </div>
+                                    </div>
+                                    <div class="improvement-item">
+                                        <i class="fas fa-exclamation-circle"></i>
+                                        <div>
+                                            <strong>Control Descent</strong>
+                                            <p>Slow down the lowering phase by 1 second</p>
+                                        </div>
+                                    </div>
+                                    <div class="improvement-item">
+                                        <i class="fas fa-exclamation-circle"></i>
+                                        <div>
+                                            <strong>Breathing Pattern</strong>
+                                            <p>Exhale more forcefully during ascent</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <h3><i class="fas fa-medal"></i> Milestones</h3>
+                        <div class="milestones">
+                            <div class="milestone achieved">
+                                <div class="milestone-icon">🎯</div>
+                                <div class="milestone-info">
+                                    <strong>First Perfect Form</strong>
+                                    <span>3 days ago</span>
+                                </div>
+                            </div>
+                            <div class="milestone achieved">
+                                <div class="milestone-icon">🔥</div>
+                                <div class="milestone-info">
+                                    <strong>10 Consecutive Days</strong>
+                                    <span>1 week ago</span>
+                                </div>
+                            </div>
+                            <div class="milestone upcoming">
+                                <div class="milestone-icon">🏆</div>
+                                <div class="milestone-info">
+                                    <strong>1000 Total Reps</strong>
+                                    <span>50 reps remaining</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gym Planner -->
+        <section id="gym-planner" class="tab-content">
+            <div class="section-header">
+                <h2><i class="fas fa-map-marker-alt"></i> Gym Recommender & Planner</h2>
+                <p>Find perfect gyms and create personalized workout plans</p>
+            </div>
+            
+            <div class="planner-container">
+                <div class="gym-finder">
+                    <div class="glass-card">
+                        <h3><i class="fas fa-search-location"></i> Find Gyms Near You</h3>
+                        <div class="location-input">
+                            <div class="input-group">
+                                <label for="location">Your Location</label>
+                                <input type="text" id="location" placeholder="Enter city or zip code" value="New York">
+                            </div>
+                            <div class="input-group">
+                                <label for="radius">Search Radius</label>
+                                <select id="radius">
+                                    <option value="1">1 mile</option>
+                                    <option value="3" selected>3 miles</option>
+                                    <option value="5">5 miles</option>
+                                    <option value="10">10 miles</option>
+                                </select>
+                            </div>
+                            
+                            <h4>Gym Preferences</h4>
+                            <div class="preferences-grid">
+                                <div class="preference-item">
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" name="features" value="24/7" checked>
+                                        <span>24/7 Access</span>
+                                    </label>
+                                </div>
+                                <div class="preference-item">
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" name="features" value="pool" checked>
+                                        <span>Swimming Pool</span>
+                                    </label>
+                                </div>
+                                <div class="preference-item">
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" name="features" value="classes">
+                                        <span>Group Classes</span>
+                                    </label>
+                                </div>
+                                <div class="preference-item">
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" name="features" value="trainer">
+                                        <span>Personal Trainers</span>
+                                    </label>
+                                </div>
+                                <div class="preference-item">
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" name="features" value="parking">
+                                        <span>Free Parking</span>
+                                    </label>
+                                </div>
+                                <div class="preference-item">
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" name="features" value="shower">
+                                        <span>Showers</span>
+                                    </label>
+                                </div>
+                            </div>
+                            
+                            <div class="input-group">
+                                <label for="budget">Monthly Budget</label>
+                                <select id="budget">
+                                    <option value="1">Under $50</option>
+                                    <option value="2">$50-$100</option>
+                                    <option value="3" selected>$100-$150</option>
+                                    <option value="4">$150-$200</option>
+                                    <option value="5">Over $200</option>
+                                </select>
+                            </div>
+                            
+                            <button id="findGymsBtn" class="btn btn-primary">
+                                <i class="fas fa-search"></i> Search Gyms
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="gym-results">
+                    <div class="glass-card">
+                        <h3><i class="fas fa-thumbs-up"></i> Recommended Gyms</h3>
+                        <div class="gym-list" id="gymList">
+                            <!-- Gyms will be populated here -->
+                            <div class="gym-card">
+                                <div class="gym-header">
+                                    <div class="gym-name">Fitness First Premium</div>
+                                    <div class="gym-rating">4.8 ★</div>
+                                </div>
+                                <div class="gym-details">
+                                    <div class="gym-features">
+                                        <span class="feature-tag">24/7</span>
+                                        <span class="feature-tag">Pool</span>
+                                        <span class="feature-tag">Classes</span>
+                                    </div>
+                                    <div class="gym-distance">0.8 miles away</div>
+                                </div>
+                                <div class="gym-price">$99/month</div>
+                                <button class="btn btn-sm btn-secondary">View Details</button>
+                            </div>
+                        </div>
+                        
+                        <h3><i class="fas fa-chart-bar"></i> Comparison Tool</h3>
+                        <div class="comparison-table">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Gym</th>
+                                        <th>Rating</th>
+                                        <th>Distance</th>
+                                        <th>Price</th>
+                                        <th>Features</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="comparisonTable">
+                                    <!-- Comparison data will be populated -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="workout-planner">
+                    <div class="glass-card">
+                        <h3><i class="fas fa-calendar-check"></i> Workout Planner</h3>
+                        <div class="planner-tools">
+                            <div class="input-group">
+                                <label for="focusArea">Focus Area</label>
+                                <select id="focusArea">
+                                    <option value="fullbody">Full Body</option>
+                                    <option value="upper">Upper Body</option>
+                                    <option value="lower">Lower Body</option>
+                                    <option value="core">Core</option>
+                                    <option value="cardio">Cardio</option>
+                                </select>
+                            </div>
+                            
+                            <div class="input-group">
+                                <label for="workoutDuration">Duration</label>
+                                <select id="workoutDuration">
+                                    <option value="30">30 minutes</option>
+                                    <option value="45" selected>45 minutes</option>
+                                    <option value="60">60 minutes</option>
+                                    <option value="90">90 minutes</option>
+                                </select>
+                            </div>
+                            
+                            <div class="input-group">
+                                <label for="difficulty">Difficulty</label>
+                                <select id="difficulty">
+                                    <option value="beginner">Beginner</option>
+                                    <option value="intermediate" selected>Intermediate</option>
+                                    <option value="advanced">Advanced</option>
+                                </select>
+                            </div>
+                            
+                            <button id="generateWorkout" class="btn btn-primary">
+                                <i class="fas fa-magic"></i> Generate Plan
+                            </button>
+                        </div>
+                        
+                        <div class="workout-plan" id="generatedWorkout">
+                            <h4>Today's Recommended Workout</h4>
+                            <div class="exercise-list">
+                                <div class="exercise-item">
+                                    <div class="exercise-name">Barbell Squats</div>
+                                    <div class="exercise-sets">3 sets × 8-12 reps</div>
+                                    <div class="exercise-rest">Rest: 90s</div>
+                                </div>
+                                <div class="exercise-item">
+                                    <div class="exercise-name">Romanian Deadlifts</div>
+                                    <div class="exercise-sets">3 sets × 10-15 reps</div>
+                                    <div class="exercise-rest">Rest: 60s</div>
+                                </div>
+                                <div class="exercise-item">
+                                    <div class="exercise-name">Leg Press</div>
+                                    <div class="exercise-sets">3 sets × 12-15 reps</div>
+                                    <div class="exercise-rest">Rest: 60s</div>
+                                </div>
+                            </div>
+                            
+                            <div class="workout-tips">
+                                <h5><i class="fas fa-lightbulb"></i> Pro Tips</h5>
+                                <ul>
+                                    <li>Warm up for 5-10 minutes before starting</li>
+                                    <li>Focus on form over weight</li>
+                                    <li>Stay hydrated throughout</li>
+                                    <li>Cool down and stretch after</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="schedule-view">
+                            <h4>Weekly Schedule</h4>
+                            <div class="weekly-schedule">
+                                <div class="schedule-day">
+                                    <div class="day-name">Mon</div>
+                                    <div class="day-workout">Leg Day</div>
+                                </div>
+                                <div class="schedule-day">
+                                    <div class="day-name">Tue</div>
+                                    <div class="day-workout">Upper Body</div>
+                                </div>
+                                <div class="schedule-day">
+                                    <div class="day-name">Wed</div>
+                                    <div class="day-workout">Active Rest</div>
+                                </div>
+                                <div class="schedule-day">
+                                    <div class="day-name">Thu</div>
+                                    <div class="day-workout">Full Body</div>
+                                </div>
+                                <div class="schedule-day">
+                                    <div class="day-name">Fri</div>
+                                    <div class="day-workout">Cardio</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>AI Gym Assistant v2.0 | Complete AI-Powered Fitness Platform | Made with ❤️ for Fitness Enthusiasts</p>
+        <p style="margin-top: 0.5rem; font-size: 0.8rem; color: #666;">
+            <i class="fas fa-shield-alt"></i> Privacy First: Your data stays on your device |
+            <i class="fas fa-cogs"></i> 7 AI Modules Active |
+            <i class="fas fa-user-friends"></i> Serving 5,000+ users
+        </p>
+    </footer>
+
+    <!-- Modals -->
+    <div id="sessionModal" class="modal">
+        <div class="modal-content">
+            <h3>Session Summary</h3>
+            <div class="modal-body" id="sessionSummary">
+                <!-- Session details will be added here -->
+            </div>
+            <button class="btn btn-primary close-modal">Close</button>
+        </div>
+    </div>
+
+    <!-- Changed from /static/script.js to script.js -->
+    <script src="script.js"></script>
+</body>
+</html>
